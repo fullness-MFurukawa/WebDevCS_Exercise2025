@@ -11,7 +11,8 @@ public class DepartmentRepositioryFindAllTest
     [ClassInitialize]
     public static void SetUp(TestContext context)
     {
-       _repository = ServiceProviderUtil
+        // プロバイダからリポジトリを取得する
+        _repository = ServiceProviderUtil
             .GetProvider().GetService<IDepartmentRepository>();
     }
 
