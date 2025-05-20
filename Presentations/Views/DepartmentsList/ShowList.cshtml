@@ -1,0 +1,45 @@
+﻿@model DepartmentListForm
+@{
+    ViewData["Title"] = "部門一覧";
+}
+<h3 class="card-title">部門一覧</h3>
+<br>
+@if (Model == null || Model.Departments!.Count() == 0)
+{
+    <div class="alert alert-danger" role="alert">登録されている部門はありません</div>
+}
+else
+{
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>名前</th>
+                <th>更新</th>
+                <th>削除</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var department in Model.Departments!)
+            {
+                <tr>
+                    <td>@department.Name</td>
+                    <td>
+                        <form asp-action="update"
+                              method="post">
+                            <input type="hidden" name="deptId" value="@department.Id">
+                            <button type="submit" class="btn btn-warning">更新</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="delete"
+                              method="post">
+                            <input type="hidden" name="deptId" value="@department.Id">
+                            <button type="submit" class="btn btn-danger">削除</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
