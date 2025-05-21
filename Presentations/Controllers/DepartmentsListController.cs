@@ -7,6 +7,8 @@ namespace Presentations.Controllers;
 /// <summary>
 /// 部署一覧を提供するコントローラークラス
 /// </summary>
+/// <author>古川正寿</author>
+/// <date>2025/05/20</date>
 public class DepartmentsListController : Controller
 {
     private readonly ILogger<DepartmentsListController> _logger;

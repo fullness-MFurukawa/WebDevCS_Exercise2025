@@ -3,6 +3,8 @@ namespace Presentations.Models.Departments;
 /// <summary>
 /// 部署データのViewModelクラス
 /// </summary>
+/// <author>古川正寿</author>
+/// <date>2025/05/20</date>
 public class DepartmentForm
 {
     [DisplayName("部署Id")]

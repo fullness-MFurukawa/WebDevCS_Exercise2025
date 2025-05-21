@@ -5,6 +5,8 @@ namespace Presentations.Adapters;
 /// <summary>
 /// ViewModelのDepartmentFormとModelのDepartmentを変換するアダプタークラス
 /// </summary>
+/// <author>古川正寿</author>
+/// <date>2025/05/20</date>
 public class DepartmentFormAdapter : IDepartmentAdapter<DepartmentForm>
 {
     /// <summary>

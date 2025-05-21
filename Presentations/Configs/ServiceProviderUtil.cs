@@ -1,5 +1,8 @@
 ﻿namespace Presentations.Configs;
 
+/// <summary>
+/// サービスプロバイダを生成するユーティリティクラス
+/// </summary>
 public static class ServiceProviderUtil
 {
     public static IServiceProvider GetProvider()
