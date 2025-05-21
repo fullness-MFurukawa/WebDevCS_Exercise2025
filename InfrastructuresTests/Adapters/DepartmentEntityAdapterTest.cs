@@ -13,6 +13,7 @@ public class DepartmentEntityAdapterTest
     [ClassInitialize]
     public static void SetUp(TestContext context)
     {
+        // プロバイダからアダプタを取得する
         _adapter = ServiceProviderUtil
             .GetProvider().GetService<IDepartmentAdapter<DepartmentEntity>>();
     }
