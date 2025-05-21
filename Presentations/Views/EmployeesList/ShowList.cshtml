@@ -1,0 +1,51 @@
+﻿@model EmployeeListForm
+@{
+    ViewData["Title"] = "社員一覧";
+}
+<h3 class="card-title">社員一覧</h3>
+<br>
+@if (Model == null || Model.Employees!.Count() == 0)
+{
+    <div class="alert alert-danger" role="alert">登録されている社員はいません</div>
+}
+else
+{
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>名前</th>
+                <th>所属部門</th>
+                <th>電話番号</th>
+                <th>E-mailアドレス</th>
+                <th>更新</th>
+                <th>削除</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model.Employees!)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.Department!.Name</td>
+                    <td>@employee.Phone</td>
+                    <td>@employee.Email</td>
+                    <td>
+                        <form asp-action="update"
+                              method="post">
+                            <input type="hidden" name="empId" value="@employee.Id">
+                            <button type="submit" class="btn btn-warning">更新</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="delete"
+                              method="post">
+                            <input type="hidden" name="empId" value="@employee.Id">
+                            <button type="submit" class="btn btn-danger">削除</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
