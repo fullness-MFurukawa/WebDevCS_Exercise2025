@@ -27,7 +27,7 @@ public class Employee
     /// <summary>
     /// 所属部署
     /// </summary>
-    public Department? department { get; set; } = null;
+    public Department? Department { get; set; } = null;
 
     /// <summary>
     /// コンストラクタ
@@ -48,7 +48,7 @@ public class Employee
         Name = name;
         Email = email;
         Phone = phone;
-        this.department = department;
+        this.Department = department;
     }
     /// <summary>
     /// コンストラクタ
@@ -160,7 +160,7 @@ public class Employee
     /// <param name="department"></param>
     public void ChangeDepartment(Department department)
     {
-        this.department = department;
+        this.Department = department;
     }
     public override string? ToString()
     {
@@ -169,6 +169,6 @@ public class Employee
             $"社員名:{Name}, " +
             $"メールアドレス:{Email}, " +
             $"電話番号:{Phone}, " +
-            $"所属部署:{department}";
+            $"所属部署:{Department}";
     }
 }

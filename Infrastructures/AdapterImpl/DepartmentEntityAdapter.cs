@@ -10,7 +10,7 @@ namespace Infrastructures.AdapterImpl;
 public class DepartmentEntityAdapter : IDepartmentAdapter<DepartmentEntity>
 {
     /// <summary>
-    /// 部署データを指定されたDepartmentEntityに変換する
+    /// 部署データをDepartmentEntityに変換する
     /// </summary>
     /// <param name="obj">部署データ</param>
     /// <returns></returns>
