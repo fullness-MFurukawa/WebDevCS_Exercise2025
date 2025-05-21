@@ -1,5 +1,4 @@
-﻿using System;
-namespace Domains.Models.Departments;
+﻿namespace Domains.Models.Departments;
 /// <summary>
 /// 部署データのCRUD操作リポジトリインターフェース
 /// </summary>

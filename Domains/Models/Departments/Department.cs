@@ -1,10 +1,4 @@
 ﻿using Domains.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Domains.Models.Departments;
 /// <summary>
 /// 部署データを表すドメインモデル
