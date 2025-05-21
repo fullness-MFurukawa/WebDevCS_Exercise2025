@@ -31,7 +31,7 @@ public class EmployeeEntity
     /// <summary>
     /// 部署Id(外部キー)
     /// </summary>
-    [Column("dept_id")]
+    [Column("DEPT_NO")]
     public int? DeptId { get; set; } = null;
 
     /// <summary>
