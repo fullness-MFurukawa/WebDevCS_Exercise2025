@@ -9,6 +9,7 @@ using Infrastructures.RepositoryImpl;
 using Microsoft.EntityFrameworkCore;
 using Presentations.Adapters;
 using Presentations.Models.Departments;
+using Presentations.Models.Employees;
 
 namespace Presentations.Configs;
 
@@ -40,6 +41,7 @@ public static class DependecySetting
     private static void ConfigurePresentations(IServiceCollection services)
     {
         services.AddScoped<IDepartmentAdapter<DepartmentForm>, DepartmentFormAdapter>();
+        services.AddScoped<IEmployeeAdapter<EmployeeForm>, EmployeeFormAdapter>();
     }
 
     /// <summary>
@@ -50,6 +52,8 @@ public static class DependecySetting
     {
         // 部署一覧サービスインターフェースの実装の登録
         services.AddScoped<IDepartmentListService, DepartmentListServiceImpl>();
+        // 社員一覧サービスインターフェースの実装の登録
+        services.AddScoped<IEmployeeListService, EmployeeListServiceImpl>();
     }
 
     private static void ConfigureInfrastructures(IConfiguration configuration, IServiceCollection services)
