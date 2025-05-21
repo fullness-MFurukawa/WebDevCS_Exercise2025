@@ -127,7 +127,41 @@ public class Employee
             throw new DomainException("電話番号は15文字以内です。");
         }
     }
-
+    /// <summary>
+    /// 社員名を変更するメソッド
+    /// </summary>
+    /// <param name="name"></param>
+    public void ChangeName(string name)
+    {
+        validateEmployeeName(name);
+        Name = name;
+    }
+    /// <summary>
+    /// メールアドレスの変更メソッド
+    /// </summary>
+    /// <param name="email"></param>
+    public void ChangeEmail(string email)
+    {
+        validateEmployeeEmail(email);
+        Email = email;
+    }
+    /// <summary>
+    /// 電話番号の変更メソッド
+    /// </summary>
+    /// <param name="phone"></param>
+    public void ChangePhone(string phone)
+    {
+        validateEmployeePhone(phone);
+        Phone = phone;
+    }
+    /// <summary>
+    /// 所属部署の変更メソッド
+    /// </summary>
+    /// <param name="department"></param>
+    public void ChangeDepartment(Department department)
+    {
+        this.department = department;
+    }
     public override string? ToString()
     {
         return $"" +
