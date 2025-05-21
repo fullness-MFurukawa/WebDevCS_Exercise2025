@@ -22,7 +22,7 @@ public class Department
     /// <param name="name">部署名</param>
     public Department(int id, string name)
     {
-        // バリデーションチェックメソッド
+        // バリデーションチェック
         validateDepartmentId(id);
         validateDepartmentName(name);
         Id = id;
@@ -37,7 +37,7 @@ public class Department
     {
         if (id < 1)
         {
-            throw new DomainException("部署Idは1以上の整数で入力してください。");
+            throw new DomainException("部署Idは1以上の整数です。");
         }
     }
     /// <summary>
@@ -53,7 +53,7 @@ public class Department
         }
         if (name.Length > 20)
         {
-            throw new DomainException("部署名は20文字以内で入力してください。");
+            throw new DomainException("部署名は20文字以内です。");
         }
     }
     
