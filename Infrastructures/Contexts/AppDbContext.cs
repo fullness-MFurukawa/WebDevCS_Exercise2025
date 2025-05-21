@@ -14,6 +14,13 @@ public class AppDbContext : DbContext
     public DbSet<DepartmentEntity> Departments { get; set; }
 
     /// <summary>
+    /// employeeテーブルのDbSetプロパティ
+    /// </summary>
+    /// <date>2025/05/20</date>
+    public DbSet<EmployeeEntity> Employees { get; set; }
+
+
+    /// <summary>
     /// 接続情報などのオプションを受け取り、
     /// スーパークラスのDbContextの機能を用いて設定するコンストラクタ
     /// </summary>
