@@ -1,6 +1,7 @@
 ﻿using Applications.ServiceImpls;
 using Applications.Services;
 using Domains.Models.Departments;
+using Domains.Models.Employees;
 using Infrastructures.AdapterImpl;
 using Infrastructures.Contexts;
 using Infrastructures.Entities;
@@ -61,9 +62,13 @@ public static class DependecySetting
             options.LogTo(Console.WriteLine, LogLevel.Information);
         });
 
-        // 部署データのCRUD操作リポジトリインターフェースの実装の登録
+        // 部署データのCRUD操作リポジトリインターフェース実装の登録
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         // 部署データの相互変換アダプタの登録
         services.AddScoped<IDepartmentAdapter<DepartmentEntity>, DepartmentEntityAdapter>();
+        // 社員データのCRUD操作リポジトリインターフェース実装の登録
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        // 社員データの相互変換アダプタの登録
+        services.AddScoped<IEmployeeAdapter<EmployeeEntity>, EmployeeEntityAdapter>();
     }
 }
