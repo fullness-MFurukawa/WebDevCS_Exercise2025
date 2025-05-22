@@ -1,5 +1,4 @@
-﻿
-using Applications.Services;
+﻿using Applications.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
 

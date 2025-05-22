@@ -3,12 +3,6 @@ using Domains.Models.Employees;
 using Infrastructures.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace InfrastructuresTests.Adapters;
 /// <summary>
 /// EmployeeとEmployeeEntityの変換テストクラスのテストクラス

@@ -1,13 +1,6 @@
 ﻿using Applications.Services;
-using Domains.Models.Employees;
 using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ApplicationsTests.ServiceImpl;
 /// <summary>
 /// 社員一覧サービスインターフェース実装の単体テストクラス

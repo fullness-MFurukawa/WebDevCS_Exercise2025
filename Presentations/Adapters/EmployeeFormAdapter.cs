@@ -25,7 +25,7 @@ public class EmployeeFormAdapter : IEmployeeAdapter<EmployeeForm>
     {
         var form = new EmployeeForm()
         {
-            Id = obj.Id,
+            Id = (int)obj.Id!,
             Name = obj.Name,
             Email = obj.Email,
             Phone = obj.Phone,

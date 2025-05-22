@@ -11,7 +11,7 @@ public class Employee
     /// <summary>
     /// 社員Id
     /// </summary>
-    public int Id { get; set; }
+    public int? Id { get; set; }
     /// <summary>
     /// 社員名
     /// </summary>
@@ -50,6 +50,7 @@ public class Employee
         Phone = phone;
         this.Department = department;
     }
+
     /// <summary>
     /// コンストラクタ
     /// </summary>
@@ -63,6 +64,21 @@ public class Employee
     {
     }
 
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    /// <param name="name">部署名</param>
+    /// <param name="email">メールアドレス</param>
+    /// <param name="phone">電話番号</param>
+    /// <param name="department">所属部署</param>
+    public Employee(string name, string email, string phone, Department? department)
+    {
+        Id = null;
+        Name = name;
+        Email = email;
+        Phone = phone;
+        Department = department;
+    }
 
     /// <summary>
     /// バリデーションチェックメソッド

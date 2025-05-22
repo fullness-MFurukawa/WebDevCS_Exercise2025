@@ -12,6 +12,12 @@ public interface IDepartmentRepository
     /// <returns></returns>
     List<Department> FindAll();
     /// <summary>
+    /// 指定された部署Idで部署を取得する
+    /// </summary>
+    /// <param name="id">部署Id</param>
+    /// <returns></returns>
+    Department FindById(int id);
+    /// <summary>
     /// 指定された部署を永続化する
     /// </summary>
     /// <param name="department"></param>

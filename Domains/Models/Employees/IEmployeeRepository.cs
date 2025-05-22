@@ -12,8 +12,19 @@ public interface IEmployeeRepository
     /// <returns></returns>
     List<Employee> FindAllJoinDepartment();
     /// <summary>
+    /// 指定された社員Idで社員を取得する
+    /// </summary>
+    /// <param name="id">社員Id</param>
+    /// <returns></returns>
+    Employee? FindById(int id);
+    /// <summary>
     /// 指定された社員を永続化する
     /// </summary>
     /// <param name="employee"></param>
     void Create(Employee employee);
+    /// <summary>
+    /// 引数で指定された社員Idの社員を削除する
+    /// </summary>
+    /// <param name="Id">社員Id</param>
+    void DeleteById(int Id);
 }

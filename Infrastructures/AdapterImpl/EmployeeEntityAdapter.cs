@@ -27,11 +27,14 @@ public class EmployeeEntityAdapter : IEmployeeAdapter<EmployeeEntity>
     {
         var entity = new EmployeeEntity
         {
-            Id = obj.Id,
             Name = obj.Name,
             Phone = obj.Phone,
             Email = obj.Email,
         };
+        if (obj.Id != null)
+        {
+            entity.Id = (int)obj.Id;
+        }
         if ( obj.Department != null)
         {
             entity.DeptId = obj.Department!.Id;

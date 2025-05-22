@@ -1,5 +1,6 @@
 ﻿using Applications.Services;
 using Domains.Models.Departments;
+using Microsoft.Extensions.Logging;
 namespace Applications.ServiceImpls;
 /// <summary>
 /// 部署一覧サービスインターフェースの実装
@@ -12,17 +13,23 @@ public class DepartmentListServiceImpl : IDepartmentListService
     /// 部署データのCRUD操作リポジトリインターフェース
     /// </summary>
     private readonly IDepartmentRepository _repository;
-    /// <summary>
-    /// コンストラクタ
-    /// </summary>
-    /// <param name="repository">部署データのCRUD操作リポジトリインターフェース</param>
-    public DepartmentListServiceImpl(IDepartmentRepository repository)
+    private readonly ILogger<DepartmentListServiceImpl> _logger;
+
+    public DepartmentListServiceImpl(
+        IDepartmentRepository repository, 
+        ILogger<DepartmentListServiceImpl> logger)
     {
         _repository = repository;
+        _logger = logger;
     }
 
     public List<Department> Execute()
     {
-        return _repository.FindAll();
+        var result = _repository.FindAll();
+        foreach (var department in result)
+        {
+            _logger.LogInformation(department.ToString());
+        }
+        return result;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Domains.Models.Departments;
+﻿using Domains.Exceptions;
+using Domains.Models.Departments;
 using Infrastructures.Contexts;
 using Infrastructures.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -52,5 +53,26 @@ public class DepartmentRepository : IDepartmentRepository
         // 部署データをDBに永続化する
         _context.Departments.Add(entity);
         _context.SaveChanges();
+    }
+    /// <summary>
+    /// 指定された部署Idで部署を取得する
+    /// </summary>
+    /// <param name="id">部署Id</param>
+    /// <returns></returns>
+    public Department FindById(int id)
+    {
+        try
+        {
+            var department = _context.Departments.Find(id);
+            if (department == null)
+            {
+                throw new NotFoundException("指定された部署は存在しません。");
+            }
+            return _adapter.Restore(department);
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("部署の取得に失敗しました。", ex);
+        }
     }
 }

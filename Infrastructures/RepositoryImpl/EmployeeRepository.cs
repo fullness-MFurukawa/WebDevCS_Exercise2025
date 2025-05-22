@@ -1,4 +1,5 @@
-﻿using Domains.Models.Employees;
+﻿using Domains.Exceptions;
+using Domains.Models.Employees;
 using Infrastructures.Contexts;
 using Infrastructures.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -31,19 +32,78 @@ public class EmployeeRepository : IEmployeeRepository
     public void Create(Employee employee)
     {
         var entity = _adapter.Convert(employee);
-        _context.Employees.Add(entity);
-        _context.SaveChanges();
+        try
+        {
+            _context.Employees.Add(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("社員の永続化に失敗しました。", ex);
+        }
     }
+
     /// <summary>
     /// すべての社員を取得する
     /// </summary>
     /// <returns></returns>
     public List<Employee> FindAllJoinDepartment()
     {
-        var employees = _context.Employees
-            .Include(e => e.Department) // 部署情報を含めて取得   
-            .AsNoTracking()
-            .ToList();
-        return _adapter.Restore(employees);
+        try
+        {
+            var employees = _context.Employees
+                .Include(e => e.Department) // 部署情報を含めて取得   
+                .AsNoTracking()
+                .ToList();
+            return _adapter.Restore(employees);
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("社員の取得に失敗しました。", ex);
+        }
+    }
+    /// <summary>
+    /// 指定された社員Idで社員を取得する
+    /// </summary>
+    /// <param name="id">社員Id</param>
+    /// <returns></returns>
+    public Employee? FindById(int id)
+    {
+        try
+        {
+            var entity = _context.Employees.Find(id);
+            if (entity != null)
+            {
+                return _adapter.Restore(entity);
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("社員の取得に失敗しました。", ex);
+        }
+    }
+
+    /// <summary>
+    /// 引数で指定された社員Idの社員を削除する
+    /// </summary>
+    /// <param name="Id">社員Id</param>
+    public void DeleteById(int Id)
+    {
+        try
+        {
+            var entity = _context.Employees.Find(Id);
+            if (entity == null)
+            {
+                throw new NotFoundException(
+                $"社員Id:{Id}の社員は存在しないため、削除できませんでした。");
+            }
+            _context.Employees.Remove(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("社員の削除に失敗しました。", ex);
+        }
     }
 }

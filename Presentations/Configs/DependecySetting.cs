@@ -54,6 +54,8 @@ public static class DependecySetting
         services.AddScoped<IDepartmentListService, DepartmentListServiceImpl>();
         // 社員一覧サービスインターフェースの実装の登録
         services.AddScoped<IEmployeeListService, EmployeeListServiceImpl>();
+        // 社員登録サービスインターフェースの実装の登録
+        services.AddScoped<IRegisterEmployeeService, RegisterEmployeeService>();
     }
 
     private static void ConfigureInfrastructures(IConfiguration configuration, IServiceCollection services)
