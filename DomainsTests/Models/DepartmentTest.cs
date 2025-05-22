@@ -1,6 +1,11 @@
 ﻿using Domains.Exceptions;
 using Domains.Models.Departments;
 namespace DomainsTests.Models;
+/// <summary>
+/// 部署モデルの単体テストクラス
+/// </summary>
+/// <author>古川正寿</author>
+/// <date>2025/05/21</date>
 [TestClass]
 public class DepartmentTest
 {
@@ -19,12 +24,12 @@ public class DepartmentTest
         {
             new Department(0, "システム開発部");
         });
-        Assert.AreEqual("部署Idは1以上の整数で入力してください。", exception.Message);
+        Assert.AreEqual("部署Idは1以上の整数です。", exception.Message);
         exception = Assert.ThrowsException<DomainException>(() =>
         {
             new Department(-1, "システム開発部");
         });
-        Assert.AreEqual("部署Idは1以上の整数で入力してください。", exception.Message);
+        Assert.AreEqual("部署Idは1以上の整数です。", exception.Message);
     }
     [TestMethod("部署名が空文字列で生成するとDomainExceptionがスローされる")]
     public void TestCreate_Case3()
@@ -42,7 +47,7 @@ public class DepartmentTest
         {
             new Department(101, "0123456789012345678901234567890123456789");
         });
-        Assert.AreEqual("部署名は20文字以内で入力してください。", exception.Message);
+        Assert.AreEqual("部署名は20文字以内です。", exception.Message);
     }
 
     [TestMethod("部署名を空文字列で変更するとDomainExceptionがスローされる")]
@@ -63,6 +68,6 @@ public class DepartmentTest
         {
             department.ChangeName("0123456789012345678901234567890123456789");
         });
-        Assert.AreEqual("部署名は20文字以内で入力してください。", exception.Message);
+        Assert.AreEqual("部署名は20文字以内です。", exception.Message);
     }
 }
