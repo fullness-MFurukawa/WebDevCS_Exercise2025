@@ -29,8 +29,13 @@ public class EmployeeEntityAdapter : IEmployeeAdapter<EmployeeEntity>
         {
             Id = obj.Id,
             Name = obj.Name,
-            DeptId = obj.Department!.Id,
+            Phone = obj.Phone,
+            Email = obj.Email,
         };
+        if ( obj.Department != null)
+        {
+            entity.DeptId = obj.Department!.Id;
+        }
         return entity;
     }
     /// <summary>

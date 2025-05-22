@@ -4,7 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
 
 namespace InfrastructuresTests.Adapters;
-
+/// <summary>
+/// DepartamentとDepartmentEntityの変換テストクラスのテストクラス
+/// </summary>
+/// <author>古川正寿</author>
+/// <date>2025/05/22</date
 [TestClass]
 public class DepartmentEntityAdapterTest
 {

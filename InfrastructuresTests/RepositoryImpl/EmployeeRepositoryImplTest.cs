@@ -1,38 +1,37 @@
-﻿using Domains.Models.Departments;
+﻿using Domains.Models.Employees;
 using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
+
 namespace InfrastructuresTests.RepositoryImpl;
 /// <summary>
-/// 部署データのCRUD操作リポジトリインターフェースの実装のテストクラス
+/// 社員データのCRUD操作リポジトリインターフェースの実装のテストクラス
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/22</date>
 [TestClass]
-public class DepartmentRepositioryFindAllTest
+public class EmployeeRepositoryImplTest
 {
-   
-    private static IDepartmentRepository? _repository;
+    private static IEmployeeRepository? _repository;
     [ClassInitialize]
     public static void SetUp(TestContext context)
     {
         // プロバイダからリポジトリを取得する
         _repository = ServiceProviderUtil
-            .GetProvider().GetService<IDepartmentRepository>();
+            .GetProvider().GetService<IEmployeeRepository>();
     }
-
-    [TestMethod("全件取得できる")]
-    public void Test_FindAll_Case1()
+    [TestMethod("すべての社員と所属部署を取得する")]
+    public void Test_FindAllJoinDepartment_Case1()
     {
         // Arrange
-        var expectedCount = 5; // 期待される件数を指定
+        var expectedCount = 8; // 期待される件数を指定
         // Act
-        var result = _repository!.FindAll();
+        var result = _repository!.FindAllJoinDepartment();
         // Assert
         Assert.IsNotNull(result, "結果がnullです。");
         Assert.AreEqual(expectedCount, result.Count(), "取得件数が一致しません。");
-        foreach (var department in result)
+        foreach (var employee in result)
         {
-            Console.WriteLine(department);
+            Console.WriteLine(employee);
         }
     }
 }

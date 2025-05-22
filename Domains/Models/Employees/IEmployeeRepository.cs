@@ -7,10 +7,10 @@
 public interface IEmployeeRepository
 {
     /// <summary>
-    /// すべての社員を取得する
+    /// すべての社員と所属部署を取得する
     /// </summary>
     /// <returns></returns>
-    List<Employee> FindAll();
+    List<Employee> FindAllJoinDepartment();
     /// <summary>
     /// 指定された社員を永続化する
     /// </summary>

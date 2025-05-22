@@ -17,9 +17,12 @@ public class EmployeeListServiceImpl : IEmployeeListService
     {
         _repository = repository;
     }
-
+    /// <summary>
+    /// すべての社員と所属部署を取得する
+    /// </summary>
+    /// <returns></returns>
     public List<Employee> Execute()
     {
-        return _repository.FindAll();
+        return _repository.FindAllJoinDepartment();
     }
 }

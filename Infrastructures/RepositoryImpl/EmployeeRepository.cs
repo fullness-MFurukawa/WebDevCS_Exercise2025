@@ -38,7 +38,7 @@ public class EmployeeRepository : IEmployeeRepository
     /// すべての社員を取得する
     /// </summary>
     /// <returns></returns>
-    public List<Employee> FindAll()
+    public List<Employee> FindAllJoinDepartment()
     {
         var employees = _context.Employees
             .Include(e => e.Department) // 部署情報を含めて取得   

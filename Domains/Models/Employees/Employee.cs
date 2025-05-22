@@ -90,7 +90,7 @@ public class Employee
         }
         if (name.Length > 20)
         {
-            throw new DomainException("部署名は20文字以内です。");
+            throw new DomainException("社員名は20文字以内です。");
         }
     }
 
