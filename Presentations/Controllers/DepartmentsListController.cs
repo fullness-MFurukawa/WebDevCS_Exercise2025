@@ -33,6 +33,13 @@ public class DepartmentsListController : Controller
     public IActionResult ShowList()
     {
         var departments = _service.Execute();
+
+        foreach (var department in departments)
+        {
+            _logger.LogInformation(department.ToString());
+        }
+
+
         var departmentForms = _adapter.Convert(departments);
         var model = new DepartmentListForm
         {
