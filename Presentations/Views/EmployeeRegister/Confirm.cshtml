@@ -1,65 +1,65 @@
 ﻿@model EmployeeRegisterForm
 @{
-    ViewData["Title"] = "社員登録(入力)";
+    ViewData["Title"] = "社員登録(確認)";
 }
-
-<h3 class="card-title">社員登録(入力)</h3>
+<h3 class="card-title">社員登録(確認)</h3>
 <br>
-<h4 class="card-text">社員情報を入力して下さい。</h4>
+<h4 class="card-text">以下の内容で登録します。</h4>
+<br>
 <form method="post">
-    <div asp-validation-summary="All" class="alert-danger" role="alert"></div>
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
                 <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Name"></label>
+                    <label asp-for="Name"></label>
                 </td>
                 <td width="180">
-                    <input asp-for="Employee.Name" class="form-control" type="text" />
-                </td>
-            </tr>
-
-            <tr>
-                <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Department.Name"></label>
-                </td>
-                <td width="180">
-                    <select name="DeptId" size="1" class="form-control">
-                        @foreach (var department in Model.Departments!)
-                        {
-                            @if (Model != null && Model.Employee!.Department!.Id == department.Id)
-                            {
-                                <option value="@department.Id" selected="selected">@department.Name</option>
-                            }
-                            else
-                            {
-                                <option value="@department.Id">@department.Name</option>
-                            }
-
-                        }
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Phone"></label>
-                </td>
-                <td width="180">
-                    <input asp-for="Employee.Phone" class="form-control" type="text" />
+                    @Model.Name
                 </td>
             </tr>
             <tr>
                 <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Email"></label>
+                    <label asp-for="DepartmentName"></label>
                 </td>
                 <td width="180">
-                    <input asp-for="Employee.Email" class="form-control" type="text" />
+                    @Model.DepartmentName
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-dark text-light" width="60">
+                    <label asp-for="Phone"></label>
+                </td>
+                <td width="180">
+                    @Model.Phone
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-dark text-light" width="60">
+                    <label asp-for="Email"></label>
+                </td>
+                <td width="180">
+                    @Model.Email
                 </td>
             </tr>
         </tbody>
     </table>
-    <br>
-    <input type="hidden" asp-for="Employee.Id">
-    <button type="submit" class="btn btn-primary btn-lg">確認</button>
+    <div class="form-group">
+        <input type="hidden" asp-for="DepartmentId" />
+        <input type="hidden" asp-for="DepartmentName" />
+        <input type="hidden" asp-for="Name" />
+        <input type="hidden" asp-for="Phone" />
+        <input type="hidden" asp-for="Email" />
+    </div>
+    <div style="display: inline-flex;">
+        <button type="submit"
+                asp-action="Register"
+                class="btn btn-primary btn-lg m-3" name="regist">
+            登録
+        </button>
+        <button type="submit"
+                asp-action="ReEnter"
+                class="btn btn-secondary btn-lg m-3" name="ReEnter">
+            戻る
+        </button>
+    </div>
 </form>

@@ -17,9 +17,9 @@ public class DepartmentsListController : Controller
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    /// <param name="logger"></param>
-    /// <param name="service"></param>
-    /// <param name="adapter"></param>
+    /// <param name="logger">ロガー</param>
+    /// <param name="service">部署一覧サービス</param>
+    /// <param name="adapter">DepartmentとDepartmentFormの相互変換</param>
     public DepartmentsListController(
         ILogger<DepartmentsListController> logger, 
         IDepartmentListService service, 

@@ -1,5 +1,45 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model EmployeeRegisterForm
 @{
+    ViewData["Title"] = "社員登録(完了)";
 }
+<h3 class="card-title">社員登録(完了)</h3>
+<br>
+<h4 class="card-text">以下の内容を登録完了しました。</h4>
+<br>
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <td class="bg-dark text-light" width="60">
+                <label asp-for="Name"></label>
+            </td>
+            <td width="180">
+                @Model.Name
+            </td>
+        </tr>
+        <tr>
+            <td class="bg-dark text-light" width="60">
+                <label asp-for="DepartmentName"></label>
+            </td>
+            <td width="180">
+                @Model.DepartmentName
+            </td>
+        </tr>
+        <tr>
+            <td class="bg-dark text-light" width="60">
+                <label asp-for="Phone"></label>
+            </td>
+            <td width="180">
+                @Model.Phone
+            </td>
+        </tr>
+        <tr>
+            <td class="bg-dark text-light" width="60">
+                <label asp-for="Email"></label>
+            </td>
+            <td width="180">
+                @Model.Email
+            </td>
+        </tr>
+    </tbody>
+</table>
+

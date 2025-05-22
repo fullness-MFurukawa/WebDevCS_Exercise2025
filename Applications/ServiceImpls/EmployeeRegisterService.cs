@@ -24,6 +24,7 @@ public class EmployeeRegisterService : IEmployeeRegisterService
         _employeeRepository = employeeRepository;
         _departmentRepository = departmentRepository;
     }
+
     /// <summary>
     /// 部署一覧を取得する
     /// </summary>
@@ -32,6 +33,16 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     {
         return _departmentRepository.FindAll();
     }
+
+    /// <summary>
+    /// メールアドレスに存在確認
+    /// </summary>
+    /// <param name="email">メールアドレス</param>
+    public bool ExistsByEmail(string email)
+    {
+        return _employeeRepository.ExistsByEmail(email);
+    }
+
     /// <summary>
     /// 部署Idで部署を取得する
     /// </summary>

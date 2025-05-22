@@ -101,9 +101,31 @@ public class EmployeeRepository : IEmployeeRepository
             _context.Employees.Remove(entity);
             _context.SaveChanges();
         }
+        catch (NotFoundException)
+        {
+            throw;
+        }
         catch (Exception ex)
         {
             throw new InternalServerException("社員の削除に失敗しました。", ex);
+        }
+    }
+    /// <summary>
+    /// メールアドレスの有無を返す
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns>true:存在する,false:存在しない</returns>
+    public bool ExistsByEmail(string email)
+    {
+        try
+        {
+            var result = _context.Employees
+            .Any(e => e.Email == email);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("メールアドレスの取得に失敗しました。", ex);
         }
     }
 }

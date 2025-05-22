@@ -6,14 +6,14 @@ namespace Applications.ServiceImpls;
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/21</date>
-public class EmployeeListServiceImpl : IEmployeeListService
+public class EmployeeListService : IEmployeeListService
 {
     private readonly IEmployeeRepository _repository;
     /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="repository"> 社員データのCRUD操作リポジトリ</param>
-    public EmployeeListServiceImpl(IEmployeeRepository repository)
+    public EmployeeListService(IEmployeeRepository repository)
     {
         _repository = repository;
     }

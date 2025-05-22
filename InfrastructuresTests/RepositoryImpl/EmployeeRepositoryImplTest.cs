@@ -1,4 +1,5 @@
-﻿using Domains.Models.Departments;
+﻿using Domains.Exceptions;
+using Domains.Models.Departments;
 using Domains.Models.Employees;
 using Infrastructures.Contexts;
 using InfrastructuresTests.Restorer;
@@ -75,5 +76,20 @@ public class EmployeeRepositoryImplTest
             // トランザクションをロールバックする
             transaction.Rollback();
         }
+    }
+
+
+    [TestMethod("メールアドレスが存在しない場合、falseを返す")]
+    public void TestExistsByEmail_Case1()
+    {
+        var result = _repository!.ExistsByEmail("sample@sample.com");
+        Assert.IsFalse(result, "メールアドレスが存在するのに、falseが返されました。");
+    }
+
+    [TestMethod("メールアドレスが存在する場合、trueを返す")]
+    public void TestExistsByEmail_Case2()
+    {
+        var result = _repository!.ExistsByEmail("h.sato@example.com");
+        Assert.IsTrue(result, "メールアドレスが存在しないのに、trueが返されました。");
     }
 }

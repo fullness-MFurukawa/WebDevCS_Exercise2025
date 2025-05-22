@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "社員登録(入力)";
 }
-
 <h3 class="card-title">社員登録(入力)</h3>
 <br>
 <h4 class="card-text">社員情報を入力して下さい。</h4>
@@ -12,58 +11,42 @@
         <tbody>
             <tr>
                 <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Name"></label>
+                    <label asp-for="Name"></label>
                 </td>
                 <td width="180">
-                    <input asp-for="Employee.Name" class="form-control" type="text" />
+                    <input asp-for="Name" class="form-control" type="text" />
                 </td>
             </tr>
 
             <tr>
                 <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Department.Name"></label>
+                    <label asp-for="DepartmentId"></label>
                 </td>
                 <td width="180">
-                    <select name="DeptId" size="1" class="form-control">
-                        @foreach (var department in Model.Departments!)
-                        {
-                            @if (Model != null)
-                            {
-                                @if (Model.Employee != null 
-                                && Model.Employee.Department != null 
-                                && Model.Employee.Department.Id == department.Id)
-                                {
-                                    <option value="@department.Id" selected="selected">@department.Name</option>
-                                }
-                                else
-                                {
-                                    <option value="@department.Id">@department.Name</option>
-                                }
-                            }
-                        }
+                    <select asp-for="DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control">
+                        <option value="">--選択してください--</option>
                     </select>
                 </td>
             </tr>
 
             <tr>
                 <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Phone"></label>
+                    <label asp-for="Phone"></label>
                 </td>
                 <td width="180">
-                    <input asp-for="Employee.Phone" class="form-control" type="text" />
+                    <input asp-for="Phone" class="form-control" type="text" />
                 </td>
             </tr>
             <tr>
                 <td class="bg-dark text-light" width="60">
-                    <label asp-for="Employee.Email"></label>
+                    <label asp-for="Email"></label>
                 </td>
                 <td width="180">
-                    <input asp-for="Employee.Email" class="form-control" type="text" />
+                    <input asp-for="Email" class="form-control" type="text" />
                 </td>
             </tr>
         </tbody>
     </table>
     <br>
-    <input type="hidden" asp-for="Employee.Id">
-    <button type="submit" class="btn btn-primary btn-lg">確認</button>
+    <button type="submit" asp-action="Confirm" class="btn btn-primary btn-lg">確認</button>
 </form>

@@ -15,6 +15,12 @@ public interface IEmployeeRegisterService
     /// <returns></returns>
     List<Department>GetDepartments();
     /// <summary>
+    /// メールアドレスに存在確認
+    /// </summary>
+    /// <param name="email">メールアドレス</param>
+    /// <returns>true:存在する false:存在しない</returns>
+    bool ExistsByEmail(string email);
+    /// <summary>
     /// 部署Idで部署を取得する
     /// </summary>
     /// <param name="id">部署Id</param>

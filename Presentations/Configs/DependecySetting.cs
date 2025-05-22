@@ -42,6 +42,7 @@ public static class DependecySetting
     {
         services.AddScoped<IDepartmentAdapter<DepartmentForm>, DepartmentFormAdapter>();
         services.AddScoped<IEmployeeAdapter<EmployeeForm>, EmployeeFormAdapter>();
+        services.AddScoped<IEmployeeAdapter<EmployeeRegisterForm>, EmployeeRegisterFormAdapter>();
     }
 
     /// <summary>
@@ -51,9 +52,9 @@ public static class DependecySetting
     private static void ConfigureApplications(IServiceCollection services)
     {
         // 部署一覧サービスインターフェースの実装の登録
-        services.AddScoped<IDepartmentListService, DepartmentListServiceImpl>();
+        services.AddScoped<IDepartmentListService, DepartmentListService>();
         // 社員一覧サービスインターフェースの実装の登録
-        services.AddScoped<IEmployeeListService, EmployeeListServiceImpl>();
+        services.AddScoped<IEmployeeListService, EmployeeListService>();
         // 社員登録サービスインターフェースの実装の登録
         services.AddScoped<IEmployeeRegisterService, EmployeeRegisterService>();
     }
