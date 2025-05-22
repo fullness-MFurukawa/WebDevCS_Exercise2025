@@ -1,6 +1,7 @@
 ﻿using Domains.Models.Departments;
 using Domains.Models.Employees;
 using Infrastructures.Contexts;
+using InfrastructuresTests.Restorer;
 using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
 namespace InfrastructuresTests.RepositoryImpl;
@@ -27,6 +28,16 @@ public class EmployeeRepositoryImplTest
         // プロバイダからDbContextを取得する
         _context = _scope.ServiceProvider.GetRequiredService<AppDbContext>();
     }
+
+    [ClassCleanup]
+    public static void TearDown()
+    {
+        var databaseRestrer = new DataBaseRestorer(_context!);
+        // データベースを復元する
+        databaseRestrer.Restore();
+    }
+
+
     [TestMethod("すべての社員と所属部署を取得する")]
     public void Test_FindAllJoinDepartment_Case1()
     {

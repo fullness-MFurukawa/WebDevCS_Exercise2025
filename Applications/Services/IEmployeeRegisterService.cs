@@ -7,7 +7,7 @@ namespace Applications.Services;
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/22</date>
-public interface IRegisterEmployeeService
+public interface IEmployeeRegisterService
 {
     /// <summary>
     /// 部署一覧を取得する

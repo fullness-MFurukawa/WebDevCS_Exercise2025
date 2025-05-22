@@ -8,7 +8,7 @@ namespace Applications.ServiceImpls;
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/22</date>
-public class RegisterEmployeeService : IRegisterEmployeeService
+public class EmployeeRegisterService : IEmployeeRegisterService
 {
     private readonly IEmployeeRepository _employeeRepository;
     private readonly IDepartmentRepository _departmentRepository;
@@ -17,7 +17,7 @@ public class RegisterEmployeeService : IRegisterEmployeeService
     /// </summary>
     /// <param name="employeeRepository">社員データのCRUD操作リポジトリインターフェース</param>
     /// <param name="departmentRepository">部署データのCRUD操作リポジトリインターフェース</param>
-    public RegisterEmployeeService(
+    public EmployeeRegisterService(
         IEmployeeRepository employeeRepository, 
         IDepartmentRepository departmentRepository)
     {

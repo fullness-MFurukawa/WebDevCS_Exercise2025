@@ -11,20 +11,18 @@ namespace Presentations.Controllers;
 /// </summary>
 public class EmployeeRegisterController : Controller
 {
-    private readonly IRegisterEmployeeService _registerEmployeeService;
+    private readonly ILogger<EmployeeRegisterController> _logger;
+    private readonly IEmployeeRegisterService _registerEmployeeService;
     private readonly IEmployeeAdapter<EmployeeForm> _employeeAdapter;
     private readonly IDepartmentAdapter<DepartmentForm> _departmentAdapter;
-    /// <summary>
-    /// コンストラクタ
-    /// </summary>
-    /// <param name="registerEmployeeService"></param>
-    /// <param name="employeeAdapter"></param>
-    /// <param name="departmentAdapter"></param>
+
     public EmployeeRegisterController(
-        IRegisterEmployeeService registerEmployeeService, 
+        ILogger<EmployeeRegisterController> logger, 
+        IEmployeeRegisterService registerEmployeeService, 
         IEmployeeAdapter<EmployeeForm> employeeAdapter, 
         IDepartmentAdapter<DepartmentForm> departmentAdapter)
     {
+        _logger = logger;
         _registerEmployeeService = registerEmployeeService;
         _employeeAdapter = employeeAdapter;
         _departmentAdapter = departmentAdapter;
@@ -35,6 +33,10 @@ public class EmployeeRegisterController : Controller
         // 部署一覧を取得する
         var departments = _registerEmployeeService.GetDepartments();
         var departmentForms = _departmentAdapter.Convert(departments);
+        foreach(var department in departmentForms)
+        {
+            _logger.LogInformation(department.ToString());
+        }
         var form = new EmployeeRegisterForm
         {
             Departments = departmentForms,

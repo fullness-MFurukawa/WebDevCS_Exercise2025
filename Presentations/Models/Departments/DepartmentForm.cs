@@ -11,4 +11,9 @@ public class DepartmentForm
     public int Id { get; set; } = 0;
     [DisplayName("部署名")]
     public string Name { get; set; } = string.Empty;
+
+    public override string? ToString()
+    {
+        return $"{Id}:{Name}";
+    }
 }
