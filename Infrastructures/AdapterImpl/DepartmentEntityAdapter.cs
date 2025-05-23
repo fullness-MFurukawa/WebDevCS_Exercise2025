@@ -1,6 +1,5 @@
 ﻿using Domains.Models.Departments;
 using Infrastructures.Entities;
-
 namespace Infrastructures.AdapterImpl;
 /// <summary>
 /// DepartmentとDepartmentEntityの相互変換クラス
@@ -18,7 +17,7 @@ public class DepartmentEntityAdapter : IDepartmentAdapter<DepartmentEntity>
     {
         var result = new DepartmentEntity
         {
-            Id = obj.Id,
+            Id = (int)obj.Id!,
             Name = obj.Name,
         };
         return result;

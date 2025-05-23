@@ -54,6 +54,7 @@ public class DepartmentRepository : IDepartmentRepository
         _context.Departments.Add(entity);
         _context.SaveChanges();
     }
+
     /// <summary>
     /// 指定された部署Idで部署を取得する
     /// </summary>
@@ -74,5 +75,16 @@ public class DepartmentRepository : IDepartmentRepository
         {
             throw new InternalServerException("部署の取得に失敗しました。", ex);
         }
+    }
+
+    /// <summary>
+    /// 部署名の存在チェック
+    /// </summary>
+    /// <param name="name">部署名</param>
+    /// <returns>true:存在する false:存在しない</returns>
+    public bool Exists(string name)
+    {
+        var resutl = _context.Departments.Any(d => d.Name == name);
+        return resutl;
     }
 }

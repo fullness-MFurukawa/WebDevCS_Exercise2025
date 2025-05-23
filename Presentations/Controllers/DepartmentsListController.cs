@@ -30,6 +30,19 @@ public class DepartmentsListController : Controller
         _adapter = adapter;
     }
 
+    /// <summary>
+    /// デフォルトアクション
+    /// </summary>
+    /// <returns></returns>
+    public IActionResult Index()
+    {
+        return RedirectToAction("ShowList");
+    }
+
+    /// <summary>
+    /// 部署一覧画面を表示する
+    /// </summary>
+    /// <returns></returns>
     public IActionResult ShowList()
     {
         var departments = _service.Execute();

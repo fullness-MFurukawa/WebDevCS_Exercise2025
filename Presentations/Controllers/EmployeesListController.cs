@@ -24,7 +24,19 @@ public class EmployeesListController : Controller
         _service = service;
         _adapter = adapter;
     }
+    /// <summary>
+    /// デフォルトアクション
+    /// </summary>
+    /// <returns></returns>
+    public IActionResult Index()
+    {
+        return RedirectToAction("ShowList");
+    }
 
+    /// <summary>
+    /// 社員一覧画面を表示する
+    /// </summary>
+    /// <returns></returns>
     public IActionResult ShowList()
     {
         var employees = _service.Execute();

@@ -10,7 +10,7 @@ public class Department
     /// <summary>
     /// 部署Id
     /// </summary>
-    public int Id { get; private set; } = 0;
+    public int? Id { get; private set; } = 0;
     /// <summary>
     /// 部署名
     /// </summary>
@@ -28,6 +28,16 @@ public class Department
         Id = id;
         Name = name;
     }
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    /// <param name="name">部署名</param>
+    public Department(string name)
+    {
+        validateDepartmentName(name);
+        Name = name;
+    }
+
     /// <summary>
     /// バリデーションチェックメソッド
     /// </summary>

@@ -9,12 +9,13 @@ namespace Applications.ServiceImpls;
 /// <date>2025/05/20</date>
 public class DepartmentListService : IDepartmentListService
 {
-    /// <summary>
-    /// 部署データのCRUD操作リポジトリインターフェース
-    /// </summary>
     private readonly IDepartmentRepository _repository;
     private readonly ILogger<DepartmentListService> _logger;
-
+    /// <summary>
+    /// コンストラクタ
+    /// </summary>
+    /// <param name="repository">部署データのCRUD操作リポジトリインターフェース</param>
+    /// <param name="logger">ロガー</param>
     public DepartmentListService(
         IDepartmentRepository repository, 
         ILogger<DepartmentListService> logger)
@@ -22,14 +23,15 @@ public class DepartmentListService : IDepartmentListService
         _repository = repository;
         _logger = logger;
     }
-
+    /// <summary>
+    /// 部署一覧を取得する   
+    /// </summary>
+    /// <returns></returns>
     public List<Department> Execute()
     {
+        _logger.LogInformation("部署一覧の取得処理を開始しました。");
         var result = _repository.FindAll();
-        foreach (var department in result)
-        {
-            _logger.LogInformation(department.ToString());
-        }
+        _logger.LogInformation("部署一覧の取得に成功しました。取得件数: {Count}", result.Count);
         return result;
     }
 }

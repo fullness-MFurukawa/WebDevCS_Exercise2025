@@ -1,5 +1,4 @@
-﻿using Domains.Exceptions;
-using Domains.Models.Departments;
+﻿using Domains.Models.Departments;
 using Domains.Models.Employees;
 using Infrastructures.Contexts;
 using InfrastructuresTests.Restorer;

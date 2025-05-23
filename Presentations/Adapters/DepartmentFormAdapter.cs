@@ -18,7 +18,7 @@ public class DepartmentFormAdapter : IDepartmentAdapter<DepartmentForm>
     {
         return new DepartmentForm()
         {
-            Id = obj.Id,
+            Id = (int)obj.Id!,
             Name = obj.Name
         };
     }

@@ -14,7 +14,7 @@ public class EmployeeListServiceImplTest
     [ClassInitialize]
     public static void SetUp(TestContext context)
     {
-        // プロバイダからリポジトリを取得する
+        // プロバイダからサービスを取得する
         _service = ServiceProviderUtil
             .GetProvider().GetService<IEmployeeListService>();
     }

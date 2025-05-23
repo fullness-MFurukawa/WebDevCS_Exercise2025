@@ -17,7 +17,7 @@ public class DepartmentListServiceImplTest
     public static void SetUp(TestContext context)
     {
         _service = ServiceProviderUtil
-            .GetProvider().GetService<IDepartmentListService>();
+            .GetProvider().GetRequiredService<IDepartmentListService>();
     }
 
     [TestMethod("部署リストを取得できる")]

@@ -1,0 +1,41 @@
+﻿@model DepartmentRegisterForm
+@{
+	ViewData["Title"] = "部門登録(確認)";
+}
+<h3 class="card-title">部門登録(確認)</h3>
+<br>
+<h4 class="card-text">以下の内容で登録します。</h4>
+<br>
+<form method="post">
+	<table class="table table-bordered table-striped">
+		<tbody>
+			<tr>
+				<td class="bg-dark text-light" width="60">
+					<label asp-for="Name"></label>
+				</td>
+				<td width="180">
+					@Model.Name
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<input type="hidden" asp-for="Name" />
+	<div style="display: inline-flex;">
+		<button type="submit"
+				asp-action="Register"
+				class="btn btn-primary btn-lg m-3" name="Register">
+			登録
+		</button>
+		<button type="submit"
+				asp-action="ReEnter"
+				class="btn btn-secondary btn-lg m-3" name="ReEnter">
+			戻る
+		</button>
+		<button type="submit"
+				asp-action="Menu"
+				class="btn btn-success btn-lg m-3" name="Menu">
+			メニュー
+		</button>
+	</div>
+</form>

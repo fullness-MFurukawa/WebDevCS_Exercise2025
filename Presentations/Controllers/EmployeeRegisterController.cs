@@ -8,7 +8,7 @@ using Presentations.Models.Employees;
 
 namespace Presentations.Controllers;
 /// <summary>
-/// 社員登録画面のコントローラー
+/// 社員登録画面のコントローラークラス
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/23</date>

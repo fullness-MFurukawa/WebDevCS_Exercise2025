@@ -22,4 +22,10 @@ public interface IDepartmentRepository
     /// </summary>
     /// <param name="department"></param>
     void Create(Department department);
+    /// <summary>
+    /// 部署名の存在チェック
+    /// </summary>
+    /// <param name="name">部署名</param>
+    /// <returns>true:存在する false:存在しない</returns>
+    bool Exists(string name);
 }
