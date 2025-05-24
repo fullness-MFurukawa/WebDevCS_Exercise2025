@@ -117,7 +117,7 @@ public class DepartmentRegisterController : ExerciseBaseController
         }
     }
     /// <summary>
-    /// 入力された部署の存在確認
+    /// 入力された部署の存在確認チェック
     /// </summary>
     /// <returns></returns>
     [AcceptVerbs("Get", "Post")]

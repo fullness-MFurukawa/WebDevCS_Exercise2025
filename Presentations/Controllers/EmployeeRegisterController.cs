@@ -145,6 +145,7 @@ public class EmployeeRegisterController : ExerciseBaseController
     /// </summary>
     /// <param name="email"></param>
     /// <returns></returns>
+    [AcceptVerbs("Get", "Post")]
     public IActionResult ExistsByEmail(string email)
     {
         // メールアドレスの存在確認を行う
