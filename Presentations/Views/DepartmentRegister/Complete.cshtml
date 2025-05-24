@@ -6,24 +6,23 @@
 <br>
 <h4 class="card-text">以下の内容を登録完了しました。</h4>
 <br>
-<form method="post">
-    <table class="table table-bordered table-striped">
-        <tbody>
-            <tr>
-                <td class="bg-dark text-light" width="60">
-                    <label asp-for="Name"></label>
-                </td>
-                <td width="180">
-                    @Model.Name
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <td class="bg-dark text-light" width="60">
+                <label asp-for="Name"></label>
+            </td>
+            <td width="180">
+                @Model.Name
+            </td>
+        </tr>
+    </tbody>
+</table>
+<form>
     <div style="display: inline-flex;">
         <button type="submit"
                 asp-action="Enter"
-                class="btn btn-primary btn-lg m-3" name="Enter">
+                class="btn btn-primary btn-lg m-3" name="Index">
             入力
         </button>
         <button type="submit"

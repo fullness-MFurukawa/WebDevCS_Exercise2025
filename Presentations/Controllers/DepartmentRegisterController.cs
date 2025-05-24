@@ -116,4 +116,14 @@ public class DepartmentRegisterController : ExerciseBaseController
             return View("Error");
         }
     }
+    /// <summary>
+    /// 入力された部署の存在確認
+    /// </summary>
+    /// <returns></returns>
+    [AcceptVerbs("Get", "Post")]
+    public IActionResult Exists(string name)
+    {
+        var result = _service.Exists(name);
+        return Json(!result);
+    }   
 }

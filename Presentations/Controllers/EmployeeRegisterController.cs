@@ -12,7 +12,7 @@ namespace Presentations.Controllers;
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/23</date>
-public class EmployeeRegisterController : Controller
+public class EmployeeRegisterController : ExerciseBaseController
 {
     private readonly ILogger<EmployeeRegisterController> _logger;
     private readonly IEmployeeRegisterService _registerEmployeeService;
@@ -53,15 +53,20 @@ public class EmployeeRegisterController : Controller
     /// <returns></returns>
     public IActionResult Enter()
     {
+        EmployeeRegisterForm form;
+        if (TempData["EnterEmployee"] is string json)
+        {
+            // JSONをEmployeeRegisterFormに変換する
+            form = JsonConvert.DeserializeObject<EmployeeRegisterForm>(json)!;
+        }
+        else
+        {
+            form = new EmployeeRegisterForm();
+        }
         // 部署一覧を取得する
         var departments = _registerEmployeeService.GetDepartments();
         var departmentForms = _departmentAdapter.Convert(departments);
-        /// 社員データ用のViewModelを作成する
-        var form = new EmployeeRegisterForm
-        {
-            // 部署一覧をViewModelにセットする
-            Departments = departmentForms,
-        };
+        form.Departments = departmentForms;
         return View(form);
     }
 
@@ -93,8 +98,9 @@ public class EmployeeRegisterController : Controller
     /// <returns></returns>
     public IActionResult ReEnter(EmployeeRegisterForm form)
     {
-        form.Departments = _departmentAdapter.Convert(_registerEmployeeService.GetDepartments());
-        return View("Enter", form);
+        // FormをJSONに変換する
+        TempData["EnterEmployee"] = JsonConvert.SerializeObject(form);
+        return RedirectToAction("Enter");
     }
 
     /// <summary>
@@ -142,6 +148,7 @@ public class EmployeeRegisterController : Controller
     public IActionResult ExistsByEmail(string email)
     {
         // メールアドレスの存在確認を行う
-        return Json(_registerEmployeeService.ExistsByEmail(email));
+        var result = _registerEmployeeService.ExistsByEmail(email);
+        return Json(!result);
     }
 }

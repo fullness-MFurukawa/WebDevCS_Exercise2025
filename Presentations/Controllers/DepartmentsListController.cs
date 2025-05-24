@@ -9,7 +9,7 @@ namespace Presentations.Controllers;
 /// </summary>
 /// <author>古川正寿</author>
 /// <date>2025/05/20</date>
-public class DepartmentsListController : Controller
+public class DepartmentsListController : ExerciseBaseController
 {
     private readonly ILogger<DepartmentsListController> _logger;
     private readonly IDepartmentListService _service;

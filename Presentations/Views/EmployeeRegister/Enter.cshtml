@@ -48,6 +48,16 @@
         </tbody>
     </table>
     <br>
-    <button type="submit" asp-action="Confirm" class="btn btn-primary btn-lg">確認</button>
-    <button type="submit" asp-action="Menu" class="btn btn-success btn-lg">メニュー</button>
+    <div style="display: inline-flex;">
+        <button type="submit"
+                asp-action="Confirm"
+                class="btn btn-primary btn-lg m-3" name="Confirm">
+            確認
+        </button>
+        <button type="submit"
+                asp-action="Menu"
+                class="btn btn-success btn-lg m-3" name="Menu">
+            メニュー
+        </button>
+    </div>
 </form>
