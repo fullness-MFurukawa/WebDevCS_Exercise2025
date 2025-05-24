@@ -9,6 +9,7 @@ public class ExerciseBaseController : Controller
     /// [メニュー]ボタンクリックリクエストハンドラ
     /// </summary>
     /// <returns></returns>
+    [AcceptVerbs("GET", "POST")]
     public IActionResult Menu()
     {
         TempData.Clear(); // TempDataをクリアする

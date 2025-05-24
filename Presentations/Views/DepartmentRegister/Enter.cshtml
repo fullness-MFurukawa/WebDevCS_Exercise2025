@@ -4,10 +4,13 @@
 }
 
 <h3 class="card-title">部門登録(入力)</h3>
-<br>
+<br />
 <h4 class="card-text">部門情報を入力して下さい。</h4>
-<form method="post">
+
+<!-- 確認用フォーム -->
+<form asp-action="Confirm" method="post">
     <div asp-validation-summary="All" class="alert-danger" role="alert"></div>
+
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
@@ -20,18 +23,15 @@
             </tr>
         </tbody>
     </table>
-    <br>
-    <div style="display: inline-flex;">
-        <button type="submit"
-                asp-action="Confirm"
-                class="btn btn-primary btn-lg m-3" name="Confirm">
-            確認
-        </button>
-        <button type="submit"
-                asp-action="Menu"
-                class="btn btn-success btn-lg m-3" name="Menu">
-            メニュー
-        </button>
+
+    <br />
+
+    <div class="d-flex justify-content-center gap-4">
+        <button type="submit" class="btn btn-primary btn-lg">確認</button>
+
+        <!-- メニューボタンをリンクに変更 -->
+        <a asp-action="Menu" class="btn btn-success btn-lg">メニュー</a>
     </div>
 </form>
+
 

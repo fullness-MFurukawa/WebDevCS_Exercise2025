@@ -21,20 +21,20 @@
 	</table>
 	<br>
 	<input type="hidden" asp-for="Name" />
-	<div style="display: inline-flex;">
+	<div class="d-flex justify-content-center gap-4">
 		<button type="submit"
 				asp-action="Register"
-				class="btn btn-primary btn-lg m-3" name="Register">
+				class="btn btn-primary btn-lg" name="Register">
 			登録
 		</button>
 		<button type="submit"
 				asp-action="ReEnter"
-				class="btn btn-secondary btn-lg m-3" name="ReEnter">
+				class="btn btn-secondary btn-lg" name="ReEnter">
 			戻る
 		</button>
 		<button type="submit"
 				asp-action="Menu"
-				class="btn btn-success btn-lg m-3" name="Menu">
+				class="btn btn-success btn-lg" name="Menu">
 			メニュー
 		</button>
 	</div>
