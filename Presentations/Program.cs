@@ -11,7 +11,7 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         // ˆË‘¶ŠÖŒW‚Ìİ’è
-        DependecySetting.Configure(builder.Configuration,builder.Services);
+        DependecySetting.Configure(builder.Configuration , builder.Services);
         
         var app = builder.Build();
 
