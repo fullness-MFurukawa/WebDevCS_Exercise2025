@@ -10,7 +10,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
-        // ˆË‘¶ŠÖŒW‚Ìİ’è
+        // ˆË‘¶ŠÖŒW‚Ì’è‹`
         DependecySetting.Configure(builder.Configuration , builder.Services);
         
         var app = builder.Build();
