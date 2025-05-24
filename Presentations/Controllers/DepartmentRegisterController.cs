@@ -13,18 +13,22 @@ public class DepartmentRegisterController : ExerciseBaseController
 {
     private readonly ILogger<DepartmentRegisterController> _logger;
     private readonly IDepartmentRegisterService _service;
+    private readonly IDepartmentAdapter<DepartmentRegisterForm> _adapter;
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="logger">ロガー</param>
     /// <param name="service">部署登録サービス</param>
+    /// <param name="service">DepartmentとDepartmentRegisterFormの相互変換</param>
     public DepartmentRegisterController(
         ILogger<DepartmentRegisterController> logger, 
-        IDepartmentRegisterService service)
+        IDepartmentRegisterService service,
+        IDepartmentAdapter<DepartmentRegisterForm> adapter)
     {
         _logger = logger;
         _service = service;
+        _adapter = adapter;
     }
 
     /// <summary>
@@ -107,13 +111,13 @@ public class DepartmentRegisterController : ExerciseBaseController
             // JSONをDepartmentRegisterFormに変換する
             var form = JsonConvert.DeserializeObject<DepartmentRegisterForm>(json)!;
             // 部署を登録する
-            _service.Register(new Department(form.Name!));
+            _service.Register(_adapter.Restore(form));
             return View(form);
         }
         else
         {
-            // TempDataが空の場合はエラーページを表示する
-            return View("Error");
+            // TemDataが無い場合は、入力画面にリダイレクトする
+            return RedirectToAction("Index");
         }
     }
     /// <summary>

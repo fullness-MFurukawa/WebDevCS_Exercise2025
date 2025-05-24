@@ -27,6 +27,10 @@ public class EmployeeRepositoryImplTest
             .GetRequiredService<IEmployeeRepository>();
         // プロバイダからDbContextを取得する
         _context = _scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        var databaseRestrer = new DataBaseRestorer(_context!);
+        // データベースを復元する
+        databaseRestrer.Restore();
     }
 
     [ClassCleanup]
@@ -90,5 +94,19 @@ public class EmployeeRepositoryImplTest
     {
         var result = _repository!.ExistsByEmail("h.sato@example.com");
         Assert.IsTrue(result, "メールアドレスが存在しないのに、trueが返されました。");
+    }
+
+    [TestMethod("電話番号が存在しない場合、falseを返す")]
+    public void TestExistsByPhone_Case1()
+    {
+        var result = _repository!.ExistsByPhone("080-1235-1007");
+        Assert.IsFalse(result, "電話番号が存在するのに、falseが返されました。");
+    }
+
+    [TestMethod("電話番号が存在する場合、trueを返す")]
+    public void TestExistsByPhone_Case2()
+    {
+        var result = _repository!.ExistsByPhone("080-1234-1007");
+        Assert.IsTrue(result, "電話番号が存在しないのに、trueが返されました。");
     }
 }

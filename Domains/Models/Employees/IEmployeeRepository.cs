@@ -24,6 +24,12 @@ public interface IEmployeeRepository
     /// <returns>true:存在するfalse:存在しない</returns>
     bool ExistsByEmail(string email);
     /// <summary>
+    /// 電話番号の有無を返す
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns>true:存在するfalse:存在しない</returns>
+    bool ExistsByPhone(string phone);
+    /// <summary>
     /// 指定された社員を永続化する
     /// </summary>
     /// <param name="employee"></param>

@@ -1,8 +1,6 @@
 ﻿using Domains.Models.Departments;
-using Domains.Models.Employees;
 using Infrastructures.Contexts;
 using InfrastructuresTests.Restorer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Presentations.Configs;
 namespace InfrastructuresTests.RepositoryImpl;
@@ -28,6 +26,10 @@ public class DepartmentRepositioryTest
             .GetRequiredService<IDepartmentRepository>();
         // プロバイダからDbContextを取得する
         _context = _scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        var databaseRestrer = new DataBaseRestorer(_context!);
+        // データベースを復元する
+        databaseRestrer.Restore();
     }
 
     [ClassCleanup]

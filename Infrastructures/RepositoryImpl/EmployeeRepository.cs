@@ -128,4 +128,22 @@ public class EmployeeRepository : IEmployeeRepository
             throw new InternalServerException("メールアドレスの取得に失敗しました。", ex);
         }
     }
+    /// <summary>
+    /// 電話番号の有無を返す
+    /// </summary>
+    /// <param name="email"></param>
+    /// <returns>true:存在するfalse:存在しない</returns>
+    public bool ExistsByPhone(string phone)
+    {
+        try
+        {
+            var result = _context.Employees
+            .Any(e => e.Phone == phone);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            throw new InternalServerException("電話番号の取得に失敗しました。", ex);
+        }
+    }
 }

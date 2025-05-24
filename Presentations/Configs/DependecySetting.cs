@@ -43,6 +43,7 @@ public static class DependecySetting
         services.AddScoped<IDepartmentAdapter<DepartmentForm>, DepartmentFormAdapter>();
         services.AddScoped<IEmployeeAdapter<EmployeeForm>, EmployeeFormAdapter>();
         services.AddScoped<IEmployeeAdapter<EmployeeRegisterForm>, EmployeeRegisterFormAdapter>();
+        services.AddScoped<IDepartmentAdapter<DepartmentRegisterForm>, DepartmentRegisterFormAdapter>();
     }
 
     /// <summary>

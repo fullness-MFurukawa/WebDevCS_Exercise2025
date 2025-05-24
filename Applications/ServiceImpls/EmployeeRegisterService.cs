@@ -60,4 +60,14 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     {
         _employeeRepository.Create(employee);
     }
+
+    /// <summary>
+    /// 電話番号の存在確認
+    /// </summary>
+    /// <param name="phone">電話番号</param>
+    /// <returns>true:存在する false:存在しない</returns>
+    public bool ExistsByPhone(string phone)
+    {
+        return _employeeRepository.ExistsByPhone(phone);
+    }
 }

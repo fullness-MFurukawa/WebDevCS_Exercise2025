@@ -16,7 +16,6 @@ public class EmployeeRegisterForm
 
     [Remote(action: "ExistsByEmail",
             controller: "EmployeeRegister",
-            //AdditionalFields = nameof(Id),
             ErrorMessage = "この{0}は既に登録されています。別の{0}で登録してください。")]
     [DisplayName("メールアドレス")]
     [Required(ErrorMessage = "{0}を入力して下さい")]
@@ -28,6 +27,9 @@ public class EmployeeRegisterForm
     [Required(ErrorMessage = "{0}を入力して下さい")]
     [RegularExpression("[0-9]{2,4}-[0-9]{3,4}-[0-9]{4}"
         , ErrorMessage = "{0}はxxxx－yyyy－zzzzの形式で入力して下さい")]
+    [Remote(action: "ExistsByPhone",
+            controller: "EmployeeRegister",
+            ErrorMessage = "この{0}は既に登録されています。別の{0}で登録してください。")]
     public string Phone { get; set; } = string.Empty;
 
     [DisplayName("所属部署")]

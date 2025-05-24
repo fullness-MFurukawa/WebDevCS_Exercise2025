@@ -135,8 +135,8 @@ public class EmployeeRegisterController : ExerciseBaseController
         }
         else
         {
-            // TempDataが空の場合はエラーページを表示する
-            return View("Error");
+            // TemDataが無い場合は、入力画面にリダイレクトする
+            return RedirectToAction("Index");
         }
     }
 
@@ -150,6 +150,19 @@ public class EmployeeRegisterController : ExerciseBaseController
     {
         // メールアドレスの存在確認を行う
         var result = _registerEmployeeService.ExistsByEmail(email);
+        return Json(!result);
+    }
+
+    /// <summary>
+    /// 電話番号の存在確認を行うリクエストハンドラ
+    /// </summary>
+    /// <param name="phone"></param>
+    /// <returns></returns>
+    [AcceptVerbs("Get", "Post")]
+    public IActionResult ExistsByPhone(string phone)
+    {
+        // 電話番号の存在確認を行う
+        var result = _registerEmployeeService.ExistsByPhone(phone);
         return Json(!result);
     }
 }

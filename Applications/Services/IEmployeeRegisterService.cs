@@ -15,11 +15,17 @@ public interface IEmployeeRegisterService
     /// <returns></returns>
     List<Department>GetDepartments();
     /// <summary>
-    /// メールアドレスに存在確認
+    /// メールアドレスの存在確認
     /// </summary>
     /// <param name="email">メールアドレス</param>
     /// <returns>true:存在する false:存在しない</returns>
     bool ExistsByEmail(string email);
+    /// <summary>
+    /// 電話番号の存在確認
+    /// </summary>
+    /// <param name="phone">電話番号</param>
+    /// <returns>true:存在する false:存在しない</returns>
+    bool ExistsByPhone(string phone);
     /// <summary>
     /// 部署Idで部署を取得する
     /// </summary>

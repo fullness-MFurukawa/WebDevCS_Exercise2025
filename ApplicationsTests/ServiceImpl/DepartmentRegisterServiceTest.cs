@@ -26,6 +26,7 @@ public class DepartmentRegisterServiceTest
         _dbContext = ServiceProviderUtil
             .GetProvider().GetRequiredService<AppDbContext>();
     }
+
     [ClassCleanup]
     public static void TearDown()
     {
